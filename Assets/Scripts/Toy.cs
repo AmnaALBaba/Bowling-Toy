@@ -1,6 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
-namespace Toy
+namespace BallingToy
 {
     public class Toy : MonoBehaviour
     {
