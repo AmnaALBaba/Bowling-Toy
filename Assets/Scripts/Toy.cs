@@ -15,7 +15,8 @@ namespace BallingToy
         float vInput;
         float hInput;
 
-        public float speed = 1f;
+        public float speed  ;
+        public float rotate ;
 
 
 
@@ -36,8 +37,10 @@ namespace BallingToy
 
         void PlayerInput(Transform ball)
         {
+             speed = 1;
+             rotate = 1;
             vInput = Input.GetAxis("Vertical") * speed;
-            hInput = Input.GetAxis("Horizontal");
+            hInput = Input.GetAxis("Horizontal")*rotate;
             ball.transform.Translate(Vector3.forward * vInput * Time.deltaTime);
             ball.transform.Translate(Vector3.left * hInput * Time.deltaTime);
         }
@@ -78,8 +81,10 @@ namespace BallingToy
         }
         void BallRest()
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetButtonDown("Jump")) // space
             {
+                speed = 0f;
+                rotate = 0f;
                 if (isplayerOneActive || isplayerTwoActive)
                 {
                     playerOneball.transform.position = new Vector3(0f, 0.379999995f, 3.01600003f);
@@ -88,6 +93,11 @@ namespace BallingToy
 
 
                     playerTwoball.transform.position = new Vector3(3.75f,0.379999995f,3.01600003f);
+
+                
+            
+                    
+
                 }
 
 
